@@ -1,0 +1,16 @@
+{
+  "domain": "mycar2ha",
+  "name": "MyCar2HA",
+  "config_flow": true,
+  "documentation": "https://github.com/oukene/mycar2ha",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@oukene"
+  ],
+  "iot_class": "",
+  "version": "1.0.0"
+}

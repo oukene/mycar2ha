@@ -1,0 +1,28 @@
+{
+    "title": "MyCar2HA",
+    "config": {
+        "step": {
+            "confirm": {
+                "description": "Do you want to set up?"
+            },
+            "user": {
+                "data": {
+                    "name": "차이름",
+                    "email": "이메일"
+                },
+                "description": "Click OK to add intergration"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "이메일 수정",
+                "data": {
+                    "email": "이메일"
+                },
+                "description": "토크 프로의 이메일 수정"
+            }
+        }
+    }
+}
