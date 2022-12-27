@@ -55,6 +55,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 {
                     vol.Required(CONF_NAME): str,
                     vol.Required(CONF_EMAIL): str,
+                    vol.Required(CONF_DECIMAL_PLACES, None, "2"): vol.All(vol.Coerce(int), vol.Range(0, 5))
                 }
             ),
             errors=errors
@@ -92,7 +93,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             return self.async_create_entry(title="", data=user_input)
 
         options_schema = {}
-        data_list = [CONF_NAME, CONF_EMAIL]
+        data_list = [CONF_NAME, CONF_EMAIL, CONF_DECIMAL_PLACES]
         for name, default, validation in OPTIONS:
             to_default = conf.options.get(name, default)
             if name in data_list and conf.options.get(name, default) == default:

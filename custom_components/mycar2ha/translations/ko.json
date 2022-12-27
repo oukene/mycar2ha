@@ -3,25 +3,25 @@
     "config": {
         "step": {
             "confirm": {
-                "description": "Do you want to set up?"
+                "description": "Torque 앱에서 설정한 정보를 입력하세요"
             },
             "user": {
                 "data": {
-                    "name": "차이름",
-                    "email": "이메일"
-                },
-                "description": "Click OK to add intergration"
+                    "name": "자동차 이름",
+                    "email": "이메일",
+                    "decial_places": "\uD45C\uC2DC\uD560 \uC18C\uC22B\uC810 \uC790\uB9AC\uC218\uB97C \uC785\uB825\uD558\uC138\uC694(0~5)"
+                }
             }
         }
     },
     "options": {
         "step": {
             "init": {
-                "title": "Naver Shopping Options",
+                "title": "",
                 "data": {
-                    "email": "이메일"
-                },
-                "description": "If unchecked it will be deleted"
+                    "email": "torque app setting email",
+                    "decial_places": "\uD45C\uC2DC\uD560 \uC18C\uC22B\uC810 \uC790\uB9AC\uC218\uB97C \uC785\uB825\uD558\uC138\uC694(0~5)"
+                }
             }
         }
     }
