@@ -1,7 +1,0 @@
-16716320|Acceleration Sensor(X axis)|g
-16716321|Acceleration Sensor(Y axis)|g
-16716322|Acceleration Sensor(Z axis)|g
-16716323|Acceleration Sensor(Total)|g
-16716400|Barometer (on Android device)|mb
-16715781|GPS Longitude|°
-16715782|GPS Latitude|°
