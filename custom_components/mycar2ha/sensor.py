@@ -133,7 +133,7 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
         if pid not in device.sensors:
             s = TorqueSensor(hass, car_name, pid, sensor_name, unit, device)
             _LOGGER.debug(f"add sensor pid : {pid}, sensor : {s}")
-            device.sensors[int(pid)] = s
+            device.sensors[pid] = s
             sensors.append(s)
 
     f.close()
@@ -228,10 +228,10 @@ class TorqueReceiveDataView(HomeAssistantView):
             is_value = VALUE_KEY.match(key)
 
             if is_name:
-                pid = convert_pid(is_name.group(1))
+                pid = is_name.group(1)
                 names[pid] = data[key]
             elif is_unit:
-                pid = convert_pid(is_unit.group(1))
+                pid = is_unit.group(1)
 
                 temp_unit = data[key]
                 if "\\xC2\\xB0" in temp_unit:
@@ -239,7 +239,7 @@ class TorqueReceiveDataView(HomeAssistantView):
 
                 units[pid] = temp_unit
             elif is_value:
-                pid = convert_pid(is_value.group(1))
+                pid = is_value.group(1)
                 if pid in sensors:
                     _LOGGER.debug(
                         f"update sensor entity id : {sensors[pid].entity_id}, pid : {pid}")
