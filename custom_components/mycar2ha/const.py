@@ -8,7 +8,7 @@ from homeassistant.const import CONF_EMAIL
 # name for the integration.
 DOMAIN = "mycar2ha"
 NAME = "MyCar2HA"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 CONF_DECIMAL_PLACES = "decial_places"
 

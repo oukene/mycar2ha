@@ -50,7 +50,7 @@ _LOGGER = logging.getLogger(__name__)
 ENTITY_ID_FORMAT = "sensor." + DOMAIN + ".{}"
 
 API_PATH = "/api/torque"
-FILE_PATH = "custom_components/mycar2ha/data/"
+FILE_PATH = "mycar2ha/data/"
 
 DEFAULT_NAME = "vehicle"
 
@@ -108,9 +108,9 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
 
     sensors = []
     if os.path.isdir(FILE_PATH) == False:
-        os.mkdir(FILE_PATH)
+        os.makedirs(FILE_PATH)
     filepath = FILE_FORMAT.format(car_name)
-
+    
     # 파일에 있는 내용으로 센서 생성
     if os.path.isfile(filepath) == False:
         f = open(filepath, "w")
@@ -120,7 +120,8 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
     lines = f.readlines()
     _LOGGER.debug(f"Device Sensors size : {len(device.sensors)}")
     for line in lines:
-        if line == "":
+        _LOGGER.debug(f"line : {line}")
+        if line == "" or line == "\n":
             continue
         line = line.replace("\n", "")
         l = line.split('|')
@@ -389,8 +390,9 @@ class TorqueSensor(SensorBase):
 
     async def async_added_to_hass(self):
         old_state = await self.async_get_last_sensor_data()
-        self._value = old_state.native_value
-        _LOGGER.debug(f"old_state.state - {old_state.native_value}")
+        if old_state != None:
+            self._value = old_state.native_value
+            _LOGGER.debug(f"old_state.state - {old_state.native_value}")
 
         self._device.register_callback(self.async_write_ha_state)
 
