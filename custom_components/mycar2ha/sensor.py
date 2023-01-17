@@ -110,7 +110,7 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
     if os.path.isdir(FILE_PATH) == False:
         os.makedirs(FILE_PATH)
     filepath = FILE_FORMAT.format(car_name)
-    
+
     # 파일에 있는 내용으로 센서 생성
     if os.path.isfile(filepath) == False:
         f = open(filepath, "w")
@@ -247,8 +247,9 @@ class TorqueReceiveDataView(HomeAssistantView):
                     state = hass.states.get(sensors[pid].entity_id)
                     sensors[pid].update(round(float(
                         str(data[key])), decimal_places) if (isNumber(str(data[key])) and sensors[pid]._name != "GPS Longitude" and sensors[pid]._name != "GPS Latitude") else data[key])
-                    hass.states.async_set(sensors[pid].entity_id, round(float(
-                        str(data[key])), decimal_places) if (isNumber(str(data[key])) and sensors[pid]._name != "GPS Longitude" and sensors[pid]._name != "GPS Latitude") else data[key], state.attributes)
+                    if state != None and state.attributes != None:
+                        hass.states.async_set(sensors[pid].entity_id, round(float(
+                            str(data[key])), decimal_places) if (isNumber(str(data[key])) and sensors[pid]._name != "GPS Longitude" and sensors[pid]._name != "GPS Latitude") else data[key], state.attributes)
 
                     if sensors[pid]._name == "GPS Longitude":
                         if tracker_state != None:
