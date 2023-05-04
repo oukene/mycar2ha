@@ -6,38 +6,17 @@
 # what the unit is, so it can display the correct range. For predefined types (such as
 # battery), the unit_of_measurement should match what's expected.
 import logging
-from threading import Timer
-from xmlrpc.client import boolean
-import aiohttp
-from typing import Optional
-import homeassistant
-
-import math
-import json
 import asyncio
-
 import os
-from homeassistant.helpers.entity import Entity
-from pkg_resources import get_provider
 
 import re
 from .const import *
-from homeassistant.helpers.entity import Iterable, DEVICE_DEFAULT_NAME, slugify, ensure_unique_string, async_generate_entity_id
-from homeassistant.helpers.entity_registry import async_get
+from homeassistant.helpers.entity import async_generate_entity_id
 
 from homeassistant.components.http import HomeAssistantView
-#from homeassistant.components.sensor import ENTITY_ID_FORMAT
 from homeassistant.const import CONF_EMAIL, CONF_NAME, DEGREE
-import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.event import async_track_state_change, track_state_change
-#from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
-from homeassistant.components.sensor import RestoreSensor, SensorEntityDescription
-from homeassistant.core import HomeAssistant, callback
-
-import aiohttp
-from urllib.parse import parse_qs, urlparse
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import threading
+from homeassistant.components.sensor import RestoreSensor
+from homeassistant.core import callback
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -45,7 +24,6 @@ _LOGGER = logging.getLogger(__name__)
 # Note how both entities for each roller sensor (battry and illuminance) are added at
 # the same time to the same list. This way only a single async_add_devices call is
 # required.
-
 
 ENTITY_ID_FORMAT = "sensor." + DOMAIN + ".{}"
 

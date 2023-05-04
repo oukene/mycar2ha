@@ -11,7 +11,7 @@ import time
 from .const import DOMAIN
 
 from homeassistant.helpers.device_registry import (
-    async_get_registry,
+    async_get,
     async_entries_for_config_entry
 )
 
