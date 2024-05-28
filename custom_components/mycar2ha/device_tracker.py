@@ -35,7 +35,7 @@ from homeassistant.helpers.entity import Iterable, DEVICE_DEFAULT_NAME, slugify,
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.const import CONF_EMAIL, CONF_NAME, DEGREE
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.event import async_track_state_change, track_state_change
+from homeassistant.helpers.event import track_state_change
 from homeassistant.components.device_tracker import SOURCE_TYPE_GPS, ATTR_SOURCE_TYPE
 from homeassistant.components.device_tracker.config_entry import TrackerEntity
 from homeassistant.core import HomeAssistant, callback
